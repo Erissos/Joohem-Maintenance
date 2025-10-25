@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bakım Modu — Joohem</title>
+  <meta name="description" content="Sitemiz şu anda bakım modunda. Yakında sizlerle olacağız." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #ef4444, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @font-face {
+      font-family: 'Eyesome';
+      src: url('fonts/Eyesome.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .font-eyesome {
+      font-family: 'Eyesome', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex items-center justify-center overflow-hidden">
+  
+  <!-- Arka plan -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-100 spin-slow"></div>
+    <div class="absolute top-40 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-violet-200 rounded-full mix-blend-multiply filter blur-xl opacity-100"></div>
+    <div class="absolute -bottom-10 left-20 w-60 h-60 sm:w-80 sm:h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-100"></div>
+  </div>
+
+  <!-- Ana içerik -->
+  <main class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    
+    <!-- Logo -->
+    <div class="mb-8 flex justify-center">
+      <div class="floating">
+        <div class="text-black font-eyesome text-5xl sm:text-7xl">Joohem</div>
+      </div>
+    </div>
+
+    <!-- İkon -->
+    <div class="mb-8 flex justify-center">
+      <div class="relative">
+        <svg class="w-20 h-20 sm:w-32 sm:h-32 text-black pulse-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Başlık -->
+    <h1 class="text-3xl sm:text-5xl font-extrabold mb-3">
+      <span class="text-black">Bakım Modundayız</span>
+    </h1>
+    
+    <p class="text-lg sm:text-2xl text-gray-600 mb-4">
+      Sitemizi sizin için daha iyi hale getiriyoruz
+    </p>
+
+    <p class="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto mb-10">
+      Şu anda sistemimiz üzerinde önemli güncellemeler yapıyoruz. Kısa bir süre içinde yeni ve geliştirilmiş hizmetlerimizle karşınızda olacağız. Anlayışınız için teşekkür ederiz.
+    </p>
+
+    <!-- Sayaç -->
+    <div class="mb-10">
+      <p class="text-xs sm:text-sm text-gray-500 mb-4 uppercase tracking-wider">Tahmini Açılış Zamanı</p>
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-3 sm:p-5 min-w-[70px] sm:min-w-[90px]">
+          <div id="days" class="text-2xl sm:text-4xl font-bold text-violet-600 mb-1">00</div>
+          <div class="text-[10px] sm:text-xs text-gray-500 uppercase">Gün</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-3 sm:p-5 min-w-[70px] sm:min-w-[90px]">
+          <div id="hours" class="text-2xl sm:text-4xl font-bold text-violet-600 mb-1">00</div>
+          <div class="text-[10px] sm:text-xs text-gray-500 uppercase">Saat</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-3 sm:p-5 min-w-[70px] sm:min-w-[90px]">
+          <div id="minutes" class="text-2xl sm:text-4xl font-bold text-pink-600 mb-1">00</div>
+          <div class="text-[10px] sm:text-xs text-gray-500 uppercase">Dakika</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-3 sm:p-5 min-w-[70px] sm:min-w-[90px]">
+          <div id="seconds" class="text-2xl sm:text-4xl font-bold text-purple-600 mb-1">00</div>
+          <div class="text-[10px] sm:text-xs text-gray-500 uppercase">Saniye</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- İletişim -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10">
+      <div class="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-violet-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h4 class="font-semibold mb-1">Adres</h4>
+        <p class="text-xs sm:text-sm text-gray-600">Meşrutiyet, Kodaman Sk. No:15 K:2 D:3, 34360 Şişli/İstanbul</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="font-semibold mb-1">Çalışma Saatleri</h4>
+        <p class="text-xs sm:text-sm text-gray-600">Pzt-Cuma: 10:00-18:00</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="text-xs sm:text-sm text-gray-400">
+      © <strong>Joohem</strong> 2025. Tüm hakları saklıdır.
+    </p>
+
+  </main>
+
+  <!-- Sayaç Scripti -->
+  <script>
+    const targetDate = new Date("November 1, 2025 00:00:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
